@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ranck_game_libras/app/modules/jogabilidade/models/pergunta_model.dart';
+import 'package:ranck_game_libras/app/widgets/title-body.dart';
+import 'package:ranck_game_libras/app/widgets/title-page.dart';
 
 class JogabilidadePage extends StatefulWidget {
   const JogabilidadePage({super.key});
@@ -51,8 +53,8 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Resultado'),
-            content: Text('Pontuação: $score'),
+            title: TitlePage('Resultado'),
+            content: TitleBody('Pontuação: $score'),
             actions: <Widget>[
               TextButton(
                 child: const Text('OK'),
@@ -73,6 +75,16 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Perguntas e Respostas'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TitlePage(
+              score.toString(),
+              color: Colors.white,
+              fontSize: 30,
+            ),
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -97,9 +109,10 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
                   value: index,
                   groupValue: selectedAnswer,
                   onChanged: (int? value) {
-                    setState(() {
-                      selectedAnswer = value;
-                    });
+                    verificaResposta(index);
+                    // setState(() {
+                    //   selectedAnswer = value;
+                    // });
                   },
                 ),
               );
