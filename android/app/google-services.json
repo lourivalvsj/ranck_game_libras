@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884639254211",
+    "project_id": "ranck-game-libras",
+    "storage_bucket": "ranck-game-libras.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884639254211:android:2c05b54e6fb37c404e8476",
+        "android_client_info": {
+          "package_name": "com.example.ranck_game_libras"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj2emssM3bamm0HumwYrszlSxT4ovU7v0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
