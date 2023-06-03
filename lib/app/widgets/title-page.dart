@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class TitlePage extends Text {
   TitlePage(
-    String data, {
+    String data, {super.key, 
     Color? color,
     TextAlign? textAlign,
     bool? softWrap,
@@ -11,7 +11,7 @@ class TitlePage extends Text {
     double? fontSize,
   }) : super(
           data,
-          style: Get.theme.textTheme.headline6?.copyWith(
+          style: Get.theme.textTheme.titleLarge?.copyWith(
             color: color,
             fontSize: fontSize,
           ),

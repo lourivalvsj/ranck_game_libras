@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:ranck_game_libras/app/theme/Theme.dart';
 
 class TextSmall extends Text {
-  TextSmall(String data, {Color? color})
+  TextSmall(String data, {super.key, Color? color})
       : super(
           data,
           style: Get.theme.textTheme.bodySmall?.copyWith(

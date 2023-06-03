@@ -2,7 +2,6 @@ import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 class TextFieldProps {
@@ -54,7 +53,7 @@ class TextFieldProps {
     this.scrollPhysics,
     this.autofillHints,
     this.restorationId,
-  }) : this.controller = controller ?? TextEditingController();
+  }) : controller = controller ?? TextEditingController();
 
   final TextEditingController? controller;
 

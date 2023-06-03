@@ -8,7 +8,7 @@ class CardSmall extends StatelessWidget {
   final String title;
   final String description;
 
-  CardSmall({
+  const CardSmall({super.key, 
     this.title = "Placeholder Title",
     this.description = "",
     this.cta = "",
@@ -86,12 +86,12 @@ class CardSmall extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: Theme.of(context).textTheme.bodyText2),
-                    Text(cta, style: Theme.of(context).textTheme.bodyText1),
+                    Text(title, style: Theme.of(context).textTheme.bodyMedium),
+                    Text(cta, style: Theme.of(context).textTheme.bodyLarge),
                     Padding(
                       padding: const EdgeInsets.only(top: defaultPadding / 2),
                       child: Text(cta,
-                          style: Theme.of(context).textTheme.bodyText1),
+                          style: Theme.of(context).textTheme.bodyLarge),
                     ),
                   ],
                 ),

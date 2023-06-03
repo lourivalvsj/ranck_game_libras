@@ -3,6 +3,7 @@ import 'package:ranck_game_libras/app/widgets/input-text.dart';
 import 'package:ranck_game_libras/utils/constants.dart';
 
 class HeaderInput extends StatelessWidget {
+  @override
   Key? key;
   final double? width;
   final String? placeholder;

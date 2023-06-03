@@ -11,7 +11,7 @@ class DrawerTile extends StatelessWidget {
   final bool isSelected;
   // final Color? iconColor;
 
-  DrawerTile({
+  const DrawerTile({super.key, 
     required this.title,
     required this.icon,
     this.onTap,

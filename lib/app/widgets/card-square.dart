@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CardSquare extends StatelessWidget {
-  CardSquare(
-      {this.title = "Placeholder Title",
+  const CardSquare(
+      {super.key, this.title = "Placeholder Title",
       this.cta = "",
       this.img = "https://via.placeholder.com/200",
       this.tap = defaultFunc});
@@ -18,14 +18,14 @@ class CardSquare extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         height: 250,
         width: null,
         child: GestureDetector(
           onTap: () => tap,
           child: Card(
               elevation: 0.4,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8.0))),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +34,7 @@ class CardSquare extends StatelessWidget {
                       flex: 3,
                       child: Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(6.0),
                                   topRight: Radius.circular(6.0)),
                               image: DecorationImage(
@@ -51,9 +51,9 @@ class CardSquare extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(title,
-                                style: Theme.of(context).textTheme.bodyText2),
+                                style: Theme.of(context).textTheme.bodyMedium),
                             Text(cta,
-                                style: Theme.of(context).textTheme.bodyText1)
+                                style: Theme.of(context).textTheme.bodyLarge)
                           ],
                         ),
                       ))

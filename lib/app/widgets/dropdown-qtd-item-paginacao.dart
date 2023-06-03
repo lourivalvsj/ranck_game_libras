@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DropdownQtdItemPaginacao extends StatelessWidget {
-  final Key? key;
+  @override
   final double? width;
   final String? name;
   final Widget? suffixIcon;
@@ -28,7 +28,7 @@ class DropdownQtdItemPaginacao extends StatelessWidget {
   final Future<List<int>?>? futureItems;
 
   DropdownQtdItemPaginacao({
-    this.key,
+    super.key,
     this.width,
     this.name,
     this.suffixIcon,
@@ -72,7 +72,7 @@ class DropdownQtdItemPaginacao extends StatelessWidget {
       child: DropdownButtonFormField(
         iconSize: 15,
         isDense: true,
-        decoration: InputDecoration(),
+        decoration: const InputDecoration(),
         style: Theme.of(context)
             .textTheme
             .bodySmall

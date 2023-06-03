@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:ranck_game_libras/app/theme/my_theme.dart';
 
 class ChangeThemeButtonWidget extends StatelessWidget {
+  const ChangeThemeButtonWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Switch.adaptive(

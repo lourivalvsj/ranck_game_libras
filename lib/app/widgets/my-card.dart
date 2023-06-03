@@ -45,7 +45,7 @@ class MyCard extends StatelessWidget {
                   runSpacing: defaultPadding,
                   children: [
                     ...children,
-                    Row(), // Só está aqui pra deixar o card expandido
+                    const Row(), // Só está aqui pra deixar o card expandido
                   ],
                 ),
                 if (newRow != null) newRow!

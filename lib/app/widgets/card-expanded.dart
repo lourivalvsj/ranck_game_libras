@@ -87,13 +87,13 @@ class _CardExpandedState extends State<CardExpanded>
                         widget.buttonVisibleOnExpanded,
                     child: ElevatedButton(
                       onPressed: widget.onPressed,
+                      style: const ButtonStyle(),
                       child: Row(
                         children: [
                           widget.iconButton ?? Container(),
                           Text(widget.textButton),
                         ],
                       ),
-                      style: const ButtonStyle(),
                     ),
                   ),
                 ],

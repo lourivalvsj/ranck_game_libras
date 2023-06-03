@@ -15,7 +15,7 @@ class DrawerMenu extends GetView<InitialController> {
       // elevation: 50,
       child: ListView(
         padding: EdgeInsets.zero,
-        children: [
+        children: const [
           // UserAccountsDrawerHeader(
           //   accountName: Text(AppStorage.instance.user?.username ?? ''),
           //   accountEmail: Text(AppStorage

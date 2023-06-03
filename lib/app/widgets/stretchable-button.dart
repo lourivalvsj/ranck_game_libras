@@ -12,7 +12,7 @@ class StretchableButton extends StatelessWidget {
   final Color? buttonBorderColor;
   final List<Widget> children;
 
-  StretchableButton({
+  const StretchableButton({super.key, 
     this.buttonColor,
     required this.borderRadius,
     required this.children,
@@ -29,9 +29,9 @@ class StretchableButton extends StatelessWidget {
         var contents = List<Widget>.from(children);
 
         if (constraints.minWidth == 0) {
-          contents.add(SizedBox.shrink());
+          contents.add(const SizedBox.shrink());
         } else {
-          contents.add(Spacer());
+          contents.add(const Spacer());
         }
 
         BorderSide bs;

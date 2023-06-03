@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ranck_game_libras/app/theme/theme.dart';
-import 'package:ranck_game_libras/utils/responsive.dart';
 import 'package:ranck_game_libras/app/widgets/text-body.dart';
 import 'package:ranck_game_libras/utils/constants.dart';
+import 'package:ranck_game_libras/utils/responsive.dart';
 
 class Input extends StatelessWidget {
-  final Key? key;
+  @override
   final double? width;
   final String? placeholder;
   final Widget? suffixIcon;
@@ -23,8 +23,8 @@ class Input extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? label;
 
-  Input({
-    this.key,
+  const Input({
+    super.key,
     this.width,
     this.placeholder,
     this.suffixIcon,

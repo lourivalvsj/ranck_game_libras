@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ranck_game_libras/app/modules/jogabilidade/controllers/jogabilidade_controller.dart';
 import 'package:ranck_game_libras/app/modules/jogabilidade/models/pergunta_model.dart';
+import 'package:ranck_game_libras/app/widgets/loading.dart';
 import 'package:ranck_game_libras/app/widgets/title-body.dart';
 import 'package:ranck_game_libras/app/widgets/title-page.dart';
 
@@ -14,27 +17,7 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
   int currentPerguntaIndex = 0;
   int score = 0;
   int? selectedAnswer;
-  List<Pergunta> perguntas = [
-    Pergunta(
-      imagem: 'assets/images/alfabeto1.png',
-      opcoes: ['Opção A', 'Opção B', 'Opção C', 'Opção D'],
-      score: 2,
-      respostaCorreta: 0,
-    ),
-    Pergunta(
-      imagem: 'assets/images/alfabeto1.png',
-      opcoes: ['Opção A', 'Opção B', 'Opção C', 'Opção D'],
-      score: 3,
-      respostaCorreta: 0,
-    ),
-    Pergunta(
-      imagem: 'assets/images/alfabeto1.png',
-      opcoes: ['Opção A', 'Opção B', 'Opção C', 'Opção D'],
-      score: 1,
-      respostaCorreta: 0,
-    ),
-    // Adicione aqui as demais perguntas
-  ];
+  late List<Pergunta> perguntas;
 
   void verificaResposta(int selectedAnswer) {
     if (selectedAnswer == perguntas[currentPerguntaIndex].respostaCorreta) {
@@ -71,6 +54,11 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -86,40 +74,56 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Image.asset(
-            perguntas[currentPerguntaIndex].imagem,
-            width: 200,
-            height: 200,
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'Pergunta ${currentPerguntaIndex + 1} de ${perguntas.length}',
-            style: const TextStyle(fontSize: 20),
-          ),
-          const SizedBox(height: 20),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: perguntas[currentPerguntaIndex].opcoes.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                title: Text(perguntas[currentPerguntaIndex].opcoes[index]),
-                leading: Radio<int>(
-                  value: index,
-                  groupValue: selectedAnswer,
-                  onChanged: (int? value) {
-                    verificaResposta(index);
-                    // setState(() {
-                    //   selectedAnswer = value;
-                    // });
-                  },
-                ),
-              );
-            },
-          ),
-        ],
-      ),
+      body: FutureBuilder<List<Pergunta>?>(
+          future: Get.find<JogabilidadeController>().findAllPerguntas(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasData) {
+                perguntas = snapshot.data!;
+
+                return Column(
+                  children: [
+                    Image.network(
+                      perguntas[currentPerguntaIndex].imagem,
+                      width: 200,
+                      height: 200,
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Pergunta ${currentPerguntaIndex + 1} de ${perguntas.length}',
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    const SizedBox(height: 20),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: perguntas[currentPerguntaIndex].opcoes.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          title: Text(
+                              perguntas[currentPerguntaIndex].opcoes[index]),
+                          leading: Radio<int>(
+                            value: index,
+                            groupValue: selectedAnswer,
+                            onChanged: (int? value) {
+                              verificaResposta(index);
+                              setState(() {
+                                selectedAnswer = value;
+                              });
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                );
+              } else {
+                return const Center(
+                  child: Text("Nenhuma pergunta encontrada..."),
+                );
+              }
+            }
+            return const Loading();
+          }),
     );
   }
 }

@@ -19,7 +19,7 @@ class MyFilter extends StatelessWidget {
           Wrap(
             children: [
               ...children,
-              Row(), // Só está aqui pra deixar o card expandido
+              const Row(), // Só está aqui pra deixar o card expandido
             ],
           ),
         ],

@@ -126,18 +126,18 @@ class MyThemes {
       shape: null,
     ),
     textTheme: const TextTheme(
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         fontSize: fontSizeInputs,
         color: SobratColors.textLight,
         overflow: TextOverflow.ellipsis,
       ),
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
         color: SobratColors.textLight,
         overflow: TextOverflow.ellipsis,
       ),
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         fontSize: 20.0,
         fontWeight: FontWeight.bold,
         color: SobratColors.textLight,

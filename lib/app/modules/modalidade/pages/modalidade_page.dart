@@ -19,7 +19,7 @@ class ModalidadePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TitlePage(
-            "MODALIDADE\n${nivel}",
+            "MODALIDADE\n$nivel",
             fontSize: 40,
             textAlign: TextAlign.center,
           ),

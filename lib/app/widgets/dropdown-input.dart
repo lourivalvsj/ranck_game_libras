@@ -5,7 +5,7 @@ import 'package:ranck_game_libras/utils/constants.dart';
 import 'package:ranck_game_libras/utils/responsive.dart';
 
 class DropdownInput extends StatelessWidget {
-  final Key? key;
+  @override
   final double? width;
   final String? placeholder;
   final Widget? suffixIcon;
@@ -27,7 +27,7 @@ class DropdownInput extends StatelessWidget {
   final dropValue = ValueNotifier('');
 
   DropdownInput({
-    this.key,
+    super.key,
     this.width,
     this.placeholder,
     this.suffixIcon,

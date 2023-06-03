@@ -19,14 +19,14 @@ class NoSpecialCharacterAndAccent extends TextInputFormatter {
     int selectionIndex = newValue.selection.end;
     int usedSubstringIndex = 0;
     final StringBuffer newText = StringBuffer();
-    String source = "[^a-zA-Z0-9 ${permit}]+";
-    String digits = "[^0-9${permit}]+";
+    String source = "[^a-zA-Z0-9 $permit]+";
+    String digits = "[^0-9$permit]+";
     String accents = "ÁÃÀÂÉÈÊÍÎÌÓÒÔÕÚÙÛ";
 
     String newValue2 = newValue.text;
     //Remove Espaços duplicados
-    while (newValue2.contains(new RegExp(r" {2}"))) {
-      newValue2 = newValue2.replaceAll(new RegExp(r" {2}"), " ");
+    while (newValue2.contains(RegExp(r" {2}"))) {
+      newValue2 = newValue2.replaceAll(RegExp(r" {2}"), " ");
     }
 
     if (isDigits) {
@@ -40,8 +40,8 @@ class NoSpecialCharacterAndAccent extends TextInputFormatter {
     }
 
     newText.write(newValue2
-        .replaceAll(new RegExp(source), "")
-        .replaceAll(new RegExp(r" {2}"), " "));
+        .replaceAll(RegExp(source), "")
+        .replaceAll(RegExp(r" {2}"), " "));
     return TextEditingValue(
       text: isLower ? newText.toString() : newText.toString().toUpperCase(),
       selection: TextSelection.collapsed(offset: selectionIndex),

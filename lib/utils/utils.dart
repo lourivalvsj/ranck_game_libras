@@ -22,7 +22,7 @@ class Utils {
   static convertDate(String date) {
     try {
       return date
-          .split(new RegExp(r"(/|-)"))
+          .split(RegExp(r"(/|-)"))
           .reversed
           .join(date.contains("/") ? "-" : "/");
     } catch (e) {
@@ -34,7 +34,7 @@ class Utils {
   static double converterMoedaParaDouble(String valor) {
     assert(valor.isNotEmpty);
     final value = double.tryParse(
-        valor.replaceAll(new RegExp(r'[^0-9,]+'), '').replaceAll(',', '.'));
+        valor.replaceAll(RegExp(r'[^0-9,]+'), '').replaceAll(',', '.'));
     return value ?? 0;
   }
 
@@ -42,7 +42,7 @@ class Utils {
   static double converterPercentualParaDouble(String valor) {
     assert(valor.isNotEmpty);
     final value = double.tryParse(
-        valor.replaceAll(new RegExp(r'[^0-9,]+'), '').replaceAll(',', '.'));
+        valor.replaceAll(RegExp(r'[^0-9,]+'), '').replaceAll(',', '.'));
     return value ?? 0;
   }
 
@@ -63,16 +63,16 @@ class Utils {
     String o2Acent = "[ÓÕÒÔÖ]";
     String uAcent = "[úùûü]";
     String u2Acent = "[ÚÙÛÜ]";
-    value = value.replaceAll(new RegExp(aAcent), "a");
-    value = value.replaceAll(new RegExp(a2Acent), "A");
-    value = value.replaceAll(new RegExp(eAcent), "e");
-    value = value.replaceAll(new RegExp(e2Acent), "E");
-    value = value.replaceAll(new RegExp(iAcent), "i");
-    value = value.replaceAll(new RegExp(i2Acent), "I");
-    value = value.replaceAll(new RegExp(oAcent), "o");
-    value = value.replaceAll(new RegExp(o2Acent), "O");
-    value = value.replaceAll(new RegExp(uAcent), "u");
-    value = value.replaceAll(new RegExp(u2Acent), "U");
+    value = value.replaceAll(RegExp(aAcent), "a");
+    value = value.replaceAll(RegExp(a2Acent), "A");
+    value = value.replaceAll(RegExp(eAcent), "e");
+    value = value.replaceAll(RegExp(e2Acent), "E");
+    value = value.replaceAll(RegExp(iAcent), "i");
+    value = value.replaceAll(RegExp(i2Acent), "I");
+    value = value.replaceAll(RegExp(oAcent), "o");
+    value = value.replaceAll(RegExp(o2Acent), "O");
+    value = value.replaceAll(RegExp(uAcent), "u");
+    value = value.replaceAll(RegExp(u2Acent), "U");
     value = value.replaceAll("ç", "c");
 
     return value;

@@ -9,7 +9,7 @@ import 'package:ranck_game_libras/utils/responsive.dart';
 import 'package:ranck_game_libras/utils/uppercasetextformatter.dart';
 
 class InputText extends StatelessWidget {
-  final Key? key;
+  @override
   final double? width;
   final EdgeInsetsGeometry? padding;
   final String? name;
@@ -41,7 +41,7 @@ class InputText extends StatelessWidget {
   void Function(String?)? onSaved;
 
   InputText({
-    this.key,
+    super.key,
     this.width,
     this.padding,
     this.name,

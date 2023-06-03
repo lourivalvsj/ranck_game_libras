@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:ranck_game_libras/app/theme/my_theme.dart';
 import 'package:ranck_game_libras/utils/global_scaffold.dart';
 
+import 'firebase_options.dart';
 import 'utils/routes/app_pages.dart';
 import 'utils/routes/app_routes.dart';
 
@@ -12,11 +15,11 @@ void main() async {
   // initializeDateFormatting('pt_BR');
   WidgetsFlutterBinding.ensureInitialized();
 
-  // await GetStorage.init();
+  await GetStorage.init();
 
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

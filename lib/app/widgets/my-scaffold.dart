@@ -23,8 +23,8 @@ class MyScaffold extends Scaffold {
               FloatingActionButtonLocation.centerDocked,
           floatingActionButton: FloatingActionButton(
             onPressed: () => Get.toNamed(AppRoutes.INITIAL),
-            child: const Icon(Icons.add),
             elevation: defaultPadding,
+            child: const Icon(Icons.add),
           ),
         );
 }

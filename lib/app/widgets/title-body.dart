@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class TitleBody extends Text {
   TitleBody(
-    String data, {
+    String data, {super.key, 
     Color? color,
     TextAlign? textAlign,
     bool? softWrap,
@@ -13,7 +13,7 @@ class TitleBody extends Text {
   }) : super(
           data,
           style: style ??
-              Get.theme.textTheme.bodyText2?.copyWith(
+              Get.theme.textTheme.bodyMedium?.copyWith(
                 color: color,
                 fontWeight: fontWeight,
               ),

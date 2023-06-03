@@ -158,8 +158,10 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (widget.searchFieldProps?.autofocus == true) //handle null and false
+    if (widget.searchFieldProps?.autofocus == true) {
+      //handle null and false
       FocusScope.of(context).requestFocus(widget.focusNode);
+    }
   }
 
   @override
@@ -200,20 +202,21 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                           } else if (!snapshot.hasData) {
                             return _loadingWidget();
                           } else if (snapshot.data!.isEmpty) {
-                            if (widget.emptyBuilder != null)
+                            if (widget.emptyBuilder != null) {
                               return widget.emptyBuilder!(
                                 context,
                                 widget.searchFieldProps?.controller?.text,
                               );
-                            else
+                            } else {
                               return const Center(
-                                child: const Text(
+                                child: Text(
                                   "Nenhum resultado",
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: fontSizeInputs,
                                   ),
                                 ),
                               );
+                            }
                           }
                           return MediaQuery.removePadding(
                             removeBottom: true,
@@ -221,9 +224,9 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                             context: context,
                             child: Scrollbar(
                               controller: widget.scrollbarProps?.controller,
-                              isAlwaysShown:
+                              thumbVisibility:
                                   widget.scrollbarProps?.isAlwaysShown,
-                              showTrackOnHover:
+                              trackVisibility:
                                   widget.scrollbarProps?.showTrackOnHover,
                               hoverThickness:
                                   widget.scrollbarProps?.hoverThickness,
@@ -304,10 +307,10 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
     if (!widget.isMultiSelectionMode) return Container();
 
     Widget defaultValidation = Padding(
-      padding: EdgeInsets.all(contentPaddingTF),
+      padding: const EdgeInsets.all(contentPaddingTF),
       child: ElevatedButton(
         onPressed: onValidate,
-        child: Text("OK"),
+        child: const Text("OK"),
       ),
     );
 
@@ -321,12 +324,12 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
     Widget popupValidationMultiSelectionWidget() {
       if (widget.popupValidationMultiSelectionWidget != null) {
         return InkWell(
+          onTap: onValidate,
           child: IgnorePointer(
             ignoring: true,
             child: widget.popupValidationMultiSelectionWidget!(
                 context, _selectedItems),
           ),
-          onTap: onValidate,
         );
       }
       return defaultValidation;
@@ -348,11 +351,11 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Error while getting online items"),
+          title: const Text("Error while getting online items"),
           content: _errorWidget(error),
           actions: <Widget>[
             TextButton(
-              child: new Text("OK"),
+              child: const Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop(false);
               },
@@ -364,19 +367,20 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
   }
 
   Widget _errorWidget(dynamic error) {
-    if (widget.errorBuilder != null)
+    if (widget.errorBuilder != null) {
       return widget.errorBuilder!(
         context,
         widget.searchFieldProps?.controller?.text,
         error,
       );
-    else
+    } else {
       return Padding(
-        padding: EdgeInsets.all(contentPaddingTF),
+        padding: const EdgeInsets.all(contentPaddingTF),
         child: Text(
           error?.toString() ?? 'Error',
         ),
       );
+    }
   }
 
   Widget _loadingWidget() {
@@ -384,18 +388,19 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
         valueListenable: _loadingNotifier,
         builder: (context, bool isLoading, wid) {
           if (isLoading) {
-            if (widget.loadingBuilder != null)
+            if (widget.loadingBuilder != null) {
               return widget.loadingBuilder!(
                 context,
                 widget.searchFieldProps?.controller?.text,
               );
-            else
-              return Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: const Center(
-                  child: const CircularProgressIndicator(),
+            } else {
+              return const Padding(
+                padding: EdgeInsets.all(24.0),
+                child: Center(
+                  child: CircularProgressIndicator(),
                 ),
               );
+            }
           }
           return Container();
         });
@@ -413,14 +418,14 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
 
     List<T> applyFilter(String? filter) {
       return _cachedItems.where((i) {
-        if (widget.filterFn != null)
+        if (widget.filterFn != null) {
           return (widget.filterFn!(i, filter));
-        else if (i
+        } else if (i
             .toString()
             .toLowerCase()
-            .contains(filter?.toLowerCase() ?? 'null'))
+            .contains(filter?.toLowerCase() ?? 'null')) {
           return true;
-        else if (widget.itemAsString != null) {
+        } else if (widget.itemAsString != null) {
           return (widget.itemAsString!(i))
               .toLowerCase()
               .contains(filter?.toLowerCase() ?? 'null');
@@ -454,10 +459,11 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
         _cachedItems.addAll(onlineItems);
 
         //don't filter data , they are already filtered online and local data are already filtered
-        if (widget.isFilteredOnline == true)
+        if (widget.isFilteredOnline == true) {
           _addDataToStream(_cachedItems);
-        else
+        } else {
           _addDataToStream(applyFilter(filter));
+        }
       } catch (e) {
         _addErrorToStream(e);
         //if offline items count > 0 , the error will be not visible for the user
@@ -488,6 +494,8 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
     return (widget.itemBuilder != null)
         ? InkWell(
             // ignore pointers in itemBuilder
+            onTap: _isDisabled(item) ? null : () => _handleSelectedItem(item),
+            // ignore pointers in itemBuilder
             child: IgnorePointer(
               ignoring: true,
               child: widget.itemBuilder!(
@@ -496,7 +504,6 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                 !widget.showSelectedItems ? false : _isSelectedItem(item),
               ),
             ),
-            onTap: _isDisabled(item) ? null : () => _handleSelectedItem(item),
           )
         : ListTile(
             enabled: !_isDisabled(item),
@@ -512,7 +519,7 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
   }
 
   Widget _itemWidgetMultiSelection(T item) {
-    if (widget.popupSelectionWidget != null)
+    if (widget.popupSelectionWidget != null) {
       return CheckBoxWidget(
         checkBox: (cnt, checked) {
           return widget.popupSelectionWidget!(context, item, checked);
@@ -522,13 +529,14 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
         isDisabled: _isDisabled(item),
         onChanged: (c) => _handleSelectedItem(item),
       );
-    else
+    } else {
       return CheckBoxWidget(
         layout: (context, isChecked) => _itemWidgetSingleSelection(item),
         isChecked: _isSelectedItem(item),
         isDisabled: _isDisabled(item),
         onChanged: (c) => _handleSelectedItem(item),
       );
+    }
   }
 
   bool _isDisabled(T item) =>
@@ -548,10 +556,11 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
 
   ///compared two items base on user params
   bool _isEqual(T i1, T i2) {
-    if (widget.compareFn != null)
+    if (widget.compareFn != null) {
       return widget.compareFn!(i1, i2);
-    else
+    } else {
       return i1 == i2;
+    }
   }
 
   Widget _searchField() {
@@ -575,10 +584,11 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                 onChanged: (f) {
                   //if controller !=null , the change event will be handled by
                   // the controller
-                  if (widget.searchFieldProps?.controller == null)
+                  if (widget.searchFieldProps?.controller == null) {
                     _debouncer(() {
                       _onTextChanged(f);
                     });
+                  }
                 },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.all(contentPaddingTF),
@@ -683,7 +693,7 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
     if (favoriteItems.isEmpty) return Container();
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: LayoutBuilder(builder: (context, constraints) {
         return SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -698,7 +708,7 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                       (f) => InkWell(
                         onTap: () => _handleSelectedItem(f),
                         child: Container(
-                          margin: EdgeInsets.only(right: 4),
+                          margin: const EdgeInsets.only(right: 4),
                           child: widget.favoriteItemBuilder != null
                               ? widget.favoriteItemBuilder!(
                                   context,
@@ -721,24 +731,27 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
       if (_isSelectedItem(newSelectedItem)) {
         _selectedItemsNotifier.value = List.from(_selectedItems)
           ..removeWhere((i) => _isEqual(newSelectedItem, i));
-        if (widget.popupOnItemRemoved != null)
+        if (widget.popupOnItemRemoved != null) {
           widget.popupOnItemRemoved!(_selectedItems, newSelectedItem);
+        }
       } else {
         _selectedItemsNotifier.value = List.from(_selectedItems)
           ..add(newSelectedItem);
-        if (widget.popupOnItemAdded != null)
+        if (widget.popupOnItemAdded != null) {
           widget.popupOnItemAdded!(_selectedItems, newSelectedItem);
+        }
       }
     } else {
       closePopup();
-      if (widget.onChanged != null)
+      if (widget.onChanged != null) {
         widget.onChanged!(List.filled(1, newSelectedItem));
+      }
     }
   }
 
   Widget _favoriteItemDefaultWidget(T item) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Theme.of(context).primaryColorLight),
@@ -754,8 +767,8 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
           ),
           // Padding(padding: EdgeInsets.only(left: 8)),
           Visibility(
-            child: Icon(Icons.check_box_outlined),
             visible: _isSelectedItem(item),
+            child: const Icon(Icons.check_box_outlined),
           )
         ],
       ),
@@ -775,14 +788,15 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
 
   void selectItems(List<T> itemsToSelect) {
     List<T> newSelectedItems = _selectedItems;
-    itemsToSelect.forEach((i) {
+    for (var i in itemsToSelect) {
       if (!_isSelectedItem(i) /*check if the item is already selected*/ &&
           !_isDisabled(i) /*escape disabled items*/) {
         newSelectedItems.add(i);
-        if (widget.popupOnItemAdded != null)
+        if (widget.popupOnItemAdded != null) {
           widget.popupOnItemAdded!(_selectedItems, i);
+        }
       }
-    });
+    }
     _selectedItemsNotifier.value = List.from(newSelectedItems);
   }
 
@@ -792,14 +806,15 @@ class SelectionWidgetState<T> extends State<SelectionWidget<T>> {
 
   void deselectItems(List<T> itemsToDeselect) {
     List<T> newSelectedItems = _selectedItems;
-    itemsToDeselect.forEach((i) {
+    for (var i in itemsToDeselect) {
       var index = _itemIndexInList(newSelectedItems, i);
       if (index > -1) /*check if the item is already selected*/ {
         newSelectedItems.removeAt(index);
-        if (widget.popupOnItemRemoved != null)
+        if (widget.popupOnItemRemoved != null) {
           widget.popupOnItemRemoved!(_selectedItems, i);
+        }
       }
-    });
+    }
     _selectedItemsNotifier.value = List.from(newSelectedItems);
   }
 

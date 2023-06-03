@@ -29,9 +29,9 @@ class CancelButton extends StatelessWidget {
         ),
         onPressed: onPressed ?? () => Get.back(),
         child: child ??
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text('CANCELAR'),
               ],
             ),

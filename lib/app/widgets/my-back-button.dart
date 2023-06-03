@@ -29,9 +29,9 @@ class MyBackButton extends StatelessWidget {
         ),
         onPressed: onPressed ?? () => Get.back(),
         child: child ??
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
+              children: [
                 Icon(
                   Icons.arrow_back,
                   color: Colors.white,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-typedef Widget WidgetCheckBox(BuildContext context, bool isChecked);
+typedef WidgetCheckBox = Widget Function(BuildContext context, bool isChecked);
 
 class CheckBoxWidget extends StatefulWidget {
   final WidgetCheckBox? layout;
@@ -9,7 +9,7 @@ class CheckBoxWidget extends StatefulWidget {
   final bool isDisabled;
   final ValueChanged<bool?>? onChanged;
 
-  CheckBoxWidget({
+  const CheckBoxWidget({
     Key? key,
     this.isChecked = false,
     this.isDisabled = false,
@@ -34,8 +34,9 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
   @override
   void didUpdateWidget(covariant CheckBoxWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.isChecked != oldWidget.isChecked)
+    if (widget.isChecked != oldWidget.isChecked) {
       isCheckedNotifier.value = widget.isChecked;
+    }
   }
 
   @override

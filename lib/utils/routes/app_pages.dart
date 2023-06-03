@@ -15,14 +15,14 @@ class AppPages {
   static final routes = <GetPage>[
     GetPage(
       name: AppRoutes.INITIAL,
-      page: () => InitialPage(),
+      page: () => const InitialPage(),
       bindings: [
         InitialBinding(),
       ],
     ),
     GetPage(
       name: AppRoutes.NIVEL_DIFICULDADE,
-      page: () => NivelDificuldadePage(),
+      page: () => const NivelDificuldadePage(),
       bindings: [
         NivelDificuldadeBinding(),
       ],
@@ -36,7 +36,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.JOGAR,
-      page: () => JogabilidadePage(),
+      page: () => const JogabilidadePage(),
       bindings: [
         JogabilidadeBinding(),
       ],
