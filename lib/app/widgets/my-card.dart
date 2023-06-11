@@ -27,7 +27,7 @@ class MyCard extends StatelessWidget {
           // shape: const RoundedRectangleBorder(
           //   borderRadius: BorderRadius.zero,
           // ),
-          color: SobratColors.secondary,
+          color: GameColors.secondary,
           child: Padding(
             padding: const EdgeInsets.all(defaultPadding),
             child: Column(

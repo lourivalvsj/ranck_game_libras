@@ -61,12 +61,12 @@ class MyTable extends StatelessWidget {
               showBottomBorder: true,
               headingRowColor: MaterialStateColor.resolveWith(
                 (states) {
-                  return SobratColors.headerTable;
+                  return GameColors.headerTable;
                 },
               ),
               dataRowColor: MaterialStateColor.resolveWith(
                 (states) {
-                  return SobratColors.secondary;
+                  return GameColors.secondary;
                 },
               ),
               headingRowHeight: 30.0,
@@ -86,7 +86,7 @@ class MyTable extends StatelessWidget {
                 child: Container(
                   height: 30.0,
                   decoration: const BoxDecoration(
-                    color: SobratColors.secondary,
+                    color: GameColors.secondary,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -112,8 +112,8 @@ class MyTable extends StatelessWidget {
                                   ),
                                 )
                               : BoxDecoration(
-                                  border: Border.all(
-                                      color: SobratColors.headerTable),
+                                  border:
+                                      Border.all(color: GameColors.headerTable),
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(20),
                                   ),
@@ -126,14 +126,14 @@ class MyTable extends StatelessWidget {
                                   ' < ',
                                   color: (currentPage ?? 1) > 0
                                       ? Theme.of(context).primaryColor
-                                      : SobratColors.headerTable,
+                                      : GameColors.headerTable,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 TextBody(
                                   'Anterior',
                                   color: (currentPage ?? 1) > 0
                                       ? null
-                                      : SobratColors.headerTable,
+                                      : GameColors.headerTable,
                                 ),
                               ],
                             ),
@@ -202,8 +202,8 @@ class MyTable extends StatelessWidget {
                                   ),
                                 )
                               : BoxDecoration(
-                                  border: Border.all(
-                                      color: SobratColors.headerTable),
+                                  border:
+                                      Border.all(color: GameColors.headerTable),
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(20),
                                   ),
@@ -217,14 +217,14 @@ class MyTable extends StatelessWidget {
                                   color: ((currentPage ?? 1) + 1) !=
                                           (totalPages ?? 1)
                                       ? null
-                                      : SobratColors.headerTable,
+                                      : GameColors.headerTable,
                                 ),
                                 TextBody(
                                   ' > ',
                                   color: ((currentPage ?? 1) + 1) !=
                                           (totalPages ?? 1)
                                       ? null
-                                      : SobratColors.headerTable,
+                                      : GameColors.headerTable,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ],

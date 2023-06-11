@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ranck_game_libras/app/theme/Theme.dart';
 
 class CardCategory extends StatelessWidget {
-  const CardCategory({super.key, 
+  const CardCategory({
+    super.key,
     this.title = "Placeholder Title",
     this.img = "https://via.placeholder.com/250",
     this.tap = defaultFunc,
@@ -30,7 +31,8 @@ class CardCategory extends StatelessWidget {
               child: Stack(children: [
                 Container(
                     decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(6.0)),
                         image: DecorationImage(
                           image: NetworkImage(img),
                           fit: BoxFit.cover,
@@ -42,7 +44,7 @@ class CardCategory extends StatelessWidget {
                 Center(
                   child: Text(title,
                       style: const TextStyle(
-                          color: SobratColors.white,
+                          color: GameColors.white,
                           fontWeight: FontWeight.w600,
                           fontSize: 18.0)),
                 )

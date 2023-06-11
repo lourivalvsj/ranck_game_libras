@@ -6,5 +6,5 @@ class TextError extends Text {
   TextError(String data, {super.key})
       : super(data,
             style: Get.theme.textTheme.bodyLarge
-                ?.copyWith(color: SobratColors.error));
+                ?.copyWith(color: GameColors.error));
 }

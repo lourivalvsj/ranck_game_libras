@@ -30,12 +30,12 @@ class BtnAdd extends StatelessWidget {
                 height: 15,
                 width: 15,
                 child: CircularProgressIndicator(
-                  color: SobratColors.white,
+                  color: GameColors.white,
                 ),
               )
             : const Icon(
                 Icons.add,
-                color: SobratColors.white,
+                color: GameColors.white,
               ),
       ),
     );

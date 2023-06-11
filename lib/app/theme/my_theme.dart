@@ -6,19 +6,19 @@ class MyThemes {
   static final darkTheme = ThemeData.dark().copyWith();
 
   static final lightTheme = ThemeData.light().copyWith(
-    primaryColorLight: SobratColors.primaryLight,
+    primaryColorLight: GameColors.primaryLight,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: SobratColors.primaryLight,
+      backgroundColor: GameColors.primaryLight,
       elevation: defaultPadding,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: SobratColors.primaryLight,
+      backgroundColor: GameColors.primaryLight,
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
-      color: SobratColors.primaryLight,
+      color: GameColors.primaryLight,
     ),
     primaryIconTheme: const IconThemeData(
-      color: SobratColors.primaryLight,
+      color: GameColors.primaryLight,
     ),
     listTileTheme: const ListTileThemeData(
       dense: true,
@@ -27,10 +27,10 @@ class MyThemes {
         left: defaultPadding,
       ),
       style: ListTileStyle.list,
-      textColor: SobratColors.textLight,
-      iconColor: SobratColors.textLight,
-      selectedColor: SobratColors.primaryLight,
-      selectedTileColor: SobratColors.menuSelectedLight,
+      textColor: GameColors.textLight,
+      iconColor: GameColors.textLight,
+      selectedColor: GameColors.primaryLight,
+      selectedTileColor: GameColors.menuSelectedLight,
       mouseCursor: MaterialStateMouseCursor.clickable,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -46,15 +46,15 @@ class MyThemes {
       // Botão Cancelar
       style: ButtonStyle(
         mouseCursor: MaterialStateProperty.all(MouseCursor.defer),
-        textStyle: MaterialStateProperty.all(
-            const TextStyle(color: SobratColors.error)),
+        textStyle:
+            MaterialStateProperty.all(const TextStyle(color: GameColors.error)),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
       textStyle: MaterialStateProperty.all(
         const TextStyle(
-          color: SobratColors.primaryLight,
+          color: GameColors.primaryLight,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -62,24 +62,24 @@ class MyThemes {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         mouseCursor: MaterialStateProperty.all(MouseCursor.uncontrolled),
-        textStyle: MaterialStateProperty.all(
-            const TextStyle(color: SobratColors.white)),
-        backgroundColor: MaterialStateProperty.all(SobratColors.primaryDark),
+        textStyle:
+            MaterialStateProperty.all(const TextStyle(color: GameColors.white)),
+        backgroundColor: MaterialStateProperty.all(GameColors.primaryDark),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       isDense: true,
       filled: true,
-      fillColor: SobratColors.bgColorScreenLight,
+      fillColor: GameColors.bgColorScreenLight,
       hintStyle: const TextStyle(
-        color: SobratColors.textDark,
+        color: GameColors.textDark,
         fontSize: fontSizeInputs,
       ),
-      focusColor: SobratColors.error,
+      focusColor: GameColors.error,
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(4.0),
         borderSide: const BorderSide(
-          color: SobratColors.error,
+          color: GameColors.error,
           width: 1.0,
           style: BorderStyle.solid,
         ),
@@ -89,26 +89,26 @@ class MyThemes {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(4.0),
         borderSide: const BorderSide(
-          color: SobratColors.border,
+          color: GameColors.border,
           width: 1.0,
           style: BorderStyle.solid,
         ),
       ),
       prefixStyle: const TextStyle(
-        decorationColor: SobratColors.primaryLight,
+        decorationColor: GameColors.primaryLight,
       ),
-      prefixIconColor: SobratColors.primaryLight,
+      prefixIconColor: GameColors.primaryLight,
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(4.0),
         borderSide: const BorderSide(
-          color: SobratColors.primaryLight,
+          color: GameColors.primaryLight,
           width: 1.0,
           style: BorderStyle.solid,
         ),
       ),
       iconColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
         if (states.contains(MaterialState.focused)) {
-          return SobratColors.primaryLight;
+          return GameColors.primaryLight;
         }
         if (states.contains(MaterialState.error)) {
           return Colors.deepOrange;
@@ -116,11 +116,11 @@ class MyThemes {
         return Colors.grey;
       }),
     ),
-    primaryColor: SobratColors.primaryLight,
+    primaryColor: GameColors.primaryLight,
     tooltipTheme: null,
-    scaffoldBackgroundColor: SobratColors.bgColorScreenLight,
+    scaffoldBackgroundColor: GameColors.white,
     drawerTheme: const DrawerThemeData(
-      backgroundColor: SobratColors.white,
+      backgroundColor: GameColors.white,
       scrimColor: null,
       elevation: null,
       shape: null,
@@ -128,23 +128,23 @@ class MyThemes {
     textTheme: const TextTheme(
       bodyLarge: TextStyle(
         fontSize: fontSizeInputs,
-        color: SobratColors.textLight,
+        color: GameColors.textLight,
         overflow: TextOverflow.ellipsis,
       ),
       bodyMedium: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        color: SobratColors.textLight,
+        color: GameColors.textLight,
         overflow: TextOverflow.ellipsis,
       ),
       titleLarge: TextStyle(
         fontSize: 20.0,
         fontWeight: FontWeight.bold,
-        color: SobratColors.textLight,
+        color: GameColors.textLight,
       ),
     ),
     iconTheme: const IconThemeData(
-      color: SobratColors.textLight,
+      color: GameColors.textLight,
       size: 20.0,
     ),
   );

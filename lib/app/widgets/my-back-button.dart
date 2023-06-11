@@ -25,7 +25,7 @@ class MyBackButton extends StatelessWidget {
       padding: padding ?? const EdgeInsets.all(defaultPadding / 2),
       child: ElevatedButton(
         style: Get.theme.elevatedButtonTheme.style?.copyWith(
-          backgroundColor: MaterialStateProperty.all(SobratColors.btnVoltar),
+          backgroundColor: MaterialStateProperty.all(GameColors.btnVoltar),
         ),
         onPressed: onPressed ?? () => Get.back(),
         child: child ??

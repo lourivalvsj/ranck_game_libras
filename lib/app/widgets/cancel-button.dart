@@ -25,7 +25,7 @@ class CancelButton extends StatelessWidget {
       padding: padding ?? const EdgeInsets.all(defaultPadding / 2),
       child: ElevatedButton(
         style: Get.theme.elevatedButtonTheme.style?.copyWith(
-          backgroundColor: MaterialStateProperty.all(SobratColors.btnCancelar),
+          backgroundColor: MaterialStateProperty.all(GameColors.btnCancelar),
         ),
         onPressed: onPressed ?? () => Get.back(),
         child: child ??

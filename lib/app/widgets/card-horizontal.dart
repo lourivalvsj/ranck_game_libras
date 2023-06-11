@@ -5,7 +5,8 @@ import 'package:ranck_game_libras/app/theme/Theme.dart';
 import 'package:ranck_game_libras/utils/constants.dart';
 
 class CardHorizontal extends StatelessWidget {
-  const CardHorizontal({super.key, 
+  const CardHorizontal({
+    super.key,
     this.title = "Placeholder Title",
     this.description = "",
     this.cta = "",
@@ -67,7 +68,7 @@ class CardHorizontal extends StatelessWidget {
                           Text(
                             description ?? '',
                             style: const TextStyle(
-                                color: SobratColors.header, fontSize: 10),
+                                color: GameColors.header, fontSize: 10),
                             overflow: TextOverflow.clip,
                           ),
                           Text(cta,

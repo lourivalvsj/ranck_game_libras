@@ -42,7 +42,7 @@ class _MyTableFakeState extends State<MyTableFake> {
       children: [
         Container(
           decoration: const BoxDecoration(
-            color: SobratColors.headerTable,
+            color: GameColors.headerTable,
           ),
           height: 30,
           child: Row(
@@ -69,10 +69,10 @@ class _MyTableFakeState extends State<MyTableFake> {
               height: 30,
               child: Container(
                 decoration: const BoxDecoration(
-                  color: SobratColors.secondary,
+                  color: GameColors.secondary,
                   border: Border(
                     bottom: BorderSide(
-                      color: SobratColors.headerTable,
+                      color: GameColors.headerTable,
                       width: 1.5,
                     ),
                   ),

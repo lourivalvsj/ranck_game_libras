@@ -1,61 +1,80 @@
+import 'dart:async';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ranck_game_libras/app/modules/jogabilidade/controllers/jogabilidade_controller.dart';
 import 'package:ranck_game_libras/app/modules/jogabilidade/models/pergunta_model.dart';
+import 'package:ranck_game_libras/app/modules/modalidade/models/modalidade_model.dart';
+import 'package:ranck_game_libras/app/modules/nivel_dificuldade/models/nivel_dificuldade_model.dart';
 import 'package:ranck_game_libras/app/widgets/loading.dart';
 import 'package:ranck_game_libras/app/widgets/title-body.dart';
 import 'package:ranck_game_libras/app/widgets/title-page.dart';
+import 'package:ranck_game_libras/utils/routes/app_routes.dart';
 
 class JogabilidadePage extends StatefulWidget {
-  const JogabilidadePage({super.key});
+  const JogabilidadePage({Key? key}) : super(key: key);
 
   @override
   _JogabilidadePageState createState() => _JogabilidadePageState();
 }
 
 class _JogabilidadePageState extends State<JogabilidadePage> {
+  NivelDificuldade nivelDificuldade = Get.arguments['nivelDificuldade'];
+  Modalidade modalidade = Get.arguments['modalidade'];
+
   int currentPerguntaIndex = 0;
   int score = 0;
-  int? selectedAnswer;
+  String? selectedAnswer;
   late List<Pergunta> perguntas;
+  Color? correctOptionColor;
+  Color? incorrectOptionColor;
 
-  void verificaResposta(int selectedAnswer) {
-    if (selectedAnswer == perguntas[currentPerguntaIndex].respostaCorreta) {
+  void verificaResposta(String? selectedAnswer) {
+    String respostaCorreta = perguntas[currentPerguntaIndex].respostaCorreta;
+
+    if (selectedAnswer == respostaCorreta) {
       setState(() {
         score += perguntas[currentPerguntaIndex].score;
-      });
-    }
-    // Verifica se é a última pergunta
-    if (currentPerguntaIndex < perguntas.length - 1) {
-      setState(() {
-        currentPerguntaIndex++;
+        correctOptionColor = Colors.green;
       });
     } else {
-      // Exibe o resultado final
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: TitlePage('Resultado'),
-            content: TitleBody('Pontuação: $score'),
-            actions: <Widget>[
-              TextButton(
-                child: const Text('OK'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  // Reinicia o jogo ou executa alguma outra ação necessária
-                },
-              ),
-            ],
-          );
-        },
-      );
+      setState(() {
+        incorrectOptionColor = Colors.red;
+        correctOptionColor = Colors.green;
+      });
     }
-  }
 
-  @override
-  void initState() {
-    super.initState();
+    Timer(Duration(seconds: selectedAnswer == respostaCorreta ? 1 : 2), () {
+      if (currentPerguntaIndex < perguntas.length - 1) {
+        setState(() {
+          currentPerguntaIndex++;
+          selectedAnswer = null;
+          correctOptionColor = null;
+          incorrectOptionColor = null;
+        });
+      } else {
+        Get.offAndToNamed(AppRoutes.FIM_JOGO);
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: TitlePage('Resultado'),
+              content: TitleBody('Pontuação: $score'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    // Reinicia o jogo ou executa alguma outra ação necessária
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
   }
 
   @override
@@ -75,19 +94,29 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
         ],
       ),
       body: FutureBuilder<List<Pergunta>?>(
-          future: Get.find<JogabilidadeController>().findAllPerguntas(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasData) {
-                perguntas = snapshot.data!;
-
-                return Column(
+        future: Get.find<JogabilidadeController>().findAllPerguntas(
+            nivelDificuldade: nivelDificuldade, modalidade: modalidade),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              perguntas = snapshot.data!;
+              return AnimatedOpacity(
+                opacity: currentPerguntaIndex < perguntas.length ? 1.0 : 0.0,
+                duration: const Duration(milliseconds: 500),
+                child: Column(
                   children: [
-                    Image.network(
-                      perguntas[currentPerguntaIndex].imagem,
-                      width: 200,
-                      height: 200,
-                    ),
+                    SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: CachedNetworkImage(
+                          imageUrl: perguntas[currentPerguntaIndex].imagem,
+                          placeholder: (context, url) => const SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: CircularProgressIndicator()),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        )),
                     const SizedBox(height: 20),
                     Text(
                       'Pergunta ${currentPerguntaIndex + 1} de ${perguntas.length}',
@@ -98,14 +127,28 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
                       shrinkWrap: true,
                       itemCount: perguntas[currentPerguntaIndex].opcoes.length,
                       itemBuilder: (BuildContext context, int index) {
+                        final option =
+                            perguntas[currentPerguntaIndex].opcoes[index];
+                        final isCorrectAnswer = option ==
+                            perguntas[currentPerguntaIndex].respostaCorreta;
+                        final isSelectedAnswer = option == selectedAnswer;
+
                         return ListTile(
                           title: Text(
-                              perguntas[currentPerguntaIndex].opcoes[index]),
-                          leading: Radio<int>(
-                            value: index,
+                            option,
+                            style: TextStyle(
+                              color: isSelectedAnswer && isCorrectAnswer
+                                  ? correctOptionColor
+                                  : isSelectedAnswer && !isCorrectAnswer
+                                      ? incorrectOptionColor
+                                      : null,
+                            ),
+                          ),
+                          leading: Radio<String>(
+                            value: option,
                             groupValue: selectedAnswer,
-                            onChanged: (int? value) {
-                              verificaResposta(index);
+                            onChanged: (String? value) {
+                              verificaResposta(value);
                               setState(() {
                                 selectedAnswer = value;
                               });
@@ -115,15 +158,17 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
                       },
                     ),
                   ],
-                );
-              } else {
-                return const Center(
-                  child: Text("Nenhuma pergunta encontrada..."),
-                );
-              }
+                ),
+              );
+            } else {
+              return const Center(
+                child: Text("Nenhuma pergunta encontrada..."),
+              );
             }
-            return const Loading();
-          }),
+          }
+          return const Loading();
+        },
+      ),
     );
   }
 }

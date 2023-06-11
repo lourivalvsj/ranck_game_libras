@@ -11,7 +11,8 @@ class DrawerTile extends StatelessWidget {
   final bool isSelected;
   // final Color? iconColor;
 
-  const DrawerTile({super.key, 
+  const DrawerTile({
+    super.key,
     required this.title,
     required this.icon,
     this.onTap,
@@ -29,8 +30,8 @@ class DrawerTile extends StatelessWidget {
             color: isSelected
                 ? Theme.of(context).primaryColor
                 : Get.isDarkMode
-                    ? SobratColors.bgColorScreenDark
-                    : SobratColors.white,
+                    ? GameColors.bgColorScreenDark
+                    : GameColors.white,
             borderRadius: const BorderRadius.all(
               Radius.circular(8),
             ),
@@ -40,13 +41,13 @@ class DrawerTile extends StatelessWidget {
               Icon(icon,
                   size: Theme.of(context).iconTheme.size,
                   color: isSelected
-                      ? SobratColors.white
+                      ? GameColors.white
                       : Theme.of(context).iconTheme.color),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: TitleBody(
                   title,
-                  color: isSelected ? SobratColors.white : null,
+                  color: isSelected ? GameColors.white : null,
                 ),
               )
             ],

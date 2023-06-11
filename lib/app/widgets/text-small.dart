@@ -8,9 +8,7 @@ class TextSmall extends Text {
           data,
           style: Get.theme.textTheme.bodySmall?.copyWith(
             color: color ??
-                (Get.isDarkMode
-                    ? SobratColors.textDark
-                    : SobratColors.textLight),
+                (Get.isDarkMode ? GameColors.textDark : GameColors.textLight),
             fontSize: 10.0,
           ),
         );

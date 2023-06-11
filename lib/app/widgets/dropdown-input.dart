@@ -35,7 +35,7 @@ class DropdownInput extends StatelessWidget {
     this.onTap,
     this.onChanged,
     this.autofocus = false,
-    this.borderColor = SobratColors.border,
+    this.borderColor = GameColors.border,
     this.controller,
     this.obscureText = false,
     this.keyboardType,
@@ -60,7 +60,7 @@ class DropdownInput extends StatelessWidget {
           onTap: () => onTap,
           autofocus: autofocus,
           style: const TextStyle(
-              height: 0.85, fontSize: 14.0, color: SobratColors.initial),
+              height: 0.85, fontSize: 14.0, color: GameColors.initial),
           decoration: InputDecoration(
             filled: true,
             isDense: true,

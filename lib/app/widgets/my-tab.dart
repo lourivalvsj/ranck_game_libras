@@ -22,7 +22,7 @@ class MyTab extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: const BoxDecoration(
-          color: SobratColors.secondary,
+          color: GameColors.secondary,
           // border: selected
           //     ? const Border(
           //         bottom: BorderSide(
