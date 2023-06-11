@@ -143,6 +143,7 @@ class GerarDados {
     // -------------------------------------------------------------------------
 
     final perguntas = [
+      //Pergunta Alfabeto Basico
       Pergunta(
         imagem:
             "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/alfabeto%2Falfabetoa.png?alt=media&token=30275c68-7a5d-4a36-8e19-226234736d64",
@@ -157,6 +158,155 @@ class GerarDados {
         nivelDificuldade: nivelBasico,
         modalidades: [
           modalidadeAlfabeto,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+            Pergunta(
+        imagem:
+            "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/alfabeto%2Falfabetob.png?alt=media&token=fd122352-52b3-4992-afed-b97e917a5047&_gl=1*ojneqh*_ga*MTY3NzA0Mjc4Ny4xNjg1OTg0MTU1*_ga_CW55HF8NVT*MTY4NjQ0OTA1Ni4xMS4xLjE2ODY0NTIxNTMuMC4wLjA.",
+        opcoes: [
+          "LETRA A",
+          "LETRA B",
+          "LETRA C",
+          "LETRA D",
+        ],
+        respostaCorreta: "LETRA B",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeAlfabeto,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      //Pergunta Alfabeto Medio
+      Pergunta(
+        imagem:
+            "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/alfabeto%2Falfabetoa.png?alt=media&token=30275c68-7a5d-4a36-8e19-226234736d64",
+        opcoes: [
+          "LETRA A",
+          "LETRA B",
+          "LETRA C",
+          "LETRA D",
+        ],
+        respostaCorreta: "LETRA A",
+        score: 1,
+        nivelDificuldade: nivelMedio,
+        modalidades: [
+          modalidadeAlfabeto,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+            Pergunta(
+        imagem:
+            "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/alfabeto%2Falfabetob.png?alt=media&token=fd122352-52b3-4992-afed-b97e917a5047&_gl=1*ojneqh*_ga*MTY3NzA0Mjc4Ny4xNjg1OTg0MTU1*_ga_CW55HF8NVT*MTY4NjQ0OTA1Ni4xMS4xLjE2ODY0NTIxNTMuMC4wLjA.",
+        opcoes: [
+          "LETRA A",
+          "LETRA B",
+          "LETRA C",
+          "LETRA D",
+        ],
+        respostaCorreta: "LETRA B",
+        score: 1,
+        nivelDificuldade: nivelMedio,
+        modalidades: [
+          modalidadeAlfabeto,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      //Pergunta Alfabeto Avancado
+      Pergunta(
+        imagem:
+            "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/alfabeto%2Falfabetoa.png?alt=media&token=30275c68-7a5d-4a36-8e19-226234736d64",
+        opcoes: [
+          "LETRA A",
+          "LETRA B",
+          "LETRA C",
+          "LETRA D",
+        ],
+        respostaCorreta: "LETRA A",
+        score: 1,
+        nivelDificuldade: nivelAvancado,
+        modalidades: [
+          modalidadeAlfabeto,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+            Pergunta(
+        imagem:
+            "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/alfabeto%2Falfabetob.png?alt=media&token=fd122352-52b3-4992-afed-b97e917a5047&_gl=1*ojneqh*_ga*MTY3NzA0Mjc4Ny4xNjg1OTg0MTU1*_ga_CW55HF8NVT*MTY4NjQ0OTA1Ni4xMS4xLjE2ODY0NTIxNTMuMC4wLjA.",
+        opcoes: [
+          "LETRA A",
+          "LETRA B",
+          "LETRA C",
+          "LETRA D",
+        ],
+        respostaCorreta: "LETRA B",
+        score: 1,
+        nivelDificuldade: nivelAvancado,
+        modalidades: [
+          modalidadeAlfabeto,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      //Pergunta Numeral Basico
+      Pergunta(
+        imagem:
+            "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/numeral%2Fnumeral0.png?alt=media&token=53a3f40c-0c43-437b-8378-ad81c68bbad0&_gl=1*z3fliv*_ga*MTY3NzA0Mjc4Ny4xNjg1OTg0MTU1*_ga_CW55HF8NVT*MTY4NjQ0OTA1Ni4xMS4xLjE2ODY0NTI3NjkuMC4wLjA.",
+        opcoes: [
+          "NUMERO 1",
+          "NUMERO 2",
+          "NUMERO 3",
+          "NUMERO 4",
+        ],
+        respostaCorreta: "NUMERO 1",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      //Pergunta Numeral Medio
+      Pergunta(
+        imagem:
+            "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/numeral%2Fnumeral0.png?alt=media&token=53a3f40c-0c43-437b-8378-ad81c68bbad0&_gl=1*z3fliv*_ga*MTY3NzA0Mjc4Ny4xNjg1OTg0MTU1*_ga_CW55HF8NVT*MTY4NjQ0OTA1Ni4xMS4xLjE2ODY0NTI3NjkuMC4wLjA.",
+        opcoes: [
+          "NUMERO 1",
+          "NUMERO 2",
+          "NUMERO 3",
+          "NUMERO 4",
+        ],
+        respostaCorreta: "NUMERO 1",
+        score: 1,
+        nivelDificuldade: nivelMedio,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      //Pergunta Numeral Avancado
+      Pergunta(
+        imagem:
+            "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/numeral%2Fnumeral0.png?alt=media&token=53a3f40c-0c43-437b-8378-ad81c68bbad0&_gl=1*z3fliv*_ga*MTY3NzA0Mjc4Ny4xNjg1OTg0MTU1*_ga_CW55HF8NVT*MTY4NjQ0OTA1Ni4xMS4xLjE2ODY0NTI3NjkuMC4wLjA.",
+        opcoes: [
+          "NUMERO 1",
+          "NUMERO 2",
+          "NUMERO 3",
+          "NUMERO 4",
+        ],
+        respostaCorreta: "NUMERO 1",
+        score: 1,
+        nivelDificuldade: nivelAvancado,
+        modalidades: [
+          modalidadeNumerico,
           modalidadeMisto,
         ],
         createdAt: DateTime.now(),

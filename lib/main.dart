@@ -12,6 +12,7 @@ import 'package:ranck_game_libras/utils/global_scaffold.dart';
 
 import 'firebase_options.dart';
 import 'utils/routes/app_pages.dart';
+//import 'package:ranck_game_libras/app/modules/data/gerar_dados.dart';
 
 void main() async {
   Intl.defaultLocale = 'pt_BR';
@@ -25,7 +26,7 @@ void main() async {
   );
 
   // Inserir dados definidos
-  // await GerarDados.insertAll();
+  //await GerarDados.insertAll();
 
   runApp(const MyApp());
 }
