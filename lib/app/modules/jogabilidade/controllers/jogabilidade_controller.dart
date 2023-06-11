@@ -14,8 +14,8 @@ class JogabilidadeController extends GetxController {
   }) async {
     var snapshot = await FirebaseFirestore.instance
         .collection("perguntas")
-        // .where('niveisDificuldade', isEqualTo: nivelDificuldade.toJson())
-        // .where('modalidades', arrayContains: modalidade.toJson())
+        .where('nivelDificuldade', isEqualTo: nivelDificuldade.toJson())
+        .where('modalidades', arrayContains: modalidade.toJson())
         .get();
 
     return snapshot.docs.map((doc) => Pergunta.fromJson(doc.data())).toList();
