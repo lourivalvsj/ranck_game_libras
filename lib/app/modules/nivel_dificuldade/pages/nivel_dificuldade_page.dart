@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ranck_game_libras/app/modules/data/gerar_dados.dart';
 import 'package:ranck_game_libras/app/modules/nivel_dificuldade/controllers/nivel_dificuldade_controller.dart';
 import 'package:ranck_game_libras/app/modules/nivel_dificuldade/models/nivel_dificuldade_model.dart';
 import 'package:ranck_game_libras/app/widgets/loading.dart';
@@ -14,8 +13,6 @@ class NivelDificuldadePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Inserir dados definidos
-    GerarDados.insertAll();
     return Scaffold(
       appBar: AppBar(
         // title: const Text('NivelDificuldade'),

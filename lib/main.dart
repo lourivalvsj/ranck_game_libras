@@ -23,6 +23,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // Inserir dados definidos
+  // await GerarDados.insertAll();
+
   runApp(const MyApp());
 }
 

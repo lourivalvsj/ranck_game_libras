@@ -7,7 +7,6 @@ part 'pergunta_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Pergunta {
-  String? id;
   String imagem;
   List<String> opcoes;
   String respostaCorreta;
@@ -17,7 +16,6 @@ class Pergunta {
   DateTime createdAt;
 
   Pergunta({
-    this.id,
     required this.imagem,
     required this.opcoes,
     required this.respostaCorreta,

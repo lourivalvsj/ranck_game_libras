@@ -7,7 +7,6 @@ part of 'modalidade_model.dart';
 // **************************************************************************
 
 Modalidade _$ModalidadeFromJson(Map<String, dynamic> json) => Modalidade(
-      id: json['id'] as String?,
       nome: json['nome'] as String,
       createdAt: json['createdAt'] == null
           ? null
@@ -16,7 +15,6 @@ Modalidade _$ModalidadeFromJson(Map<String, dynamic> json) => Modalidade(
 
 Map<String, dynamic> _$ModalidadeToJson(Modalidade instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'nome': instance.nome,
       'createdAt': instance.createdAt?.toIso8601String(),
     };

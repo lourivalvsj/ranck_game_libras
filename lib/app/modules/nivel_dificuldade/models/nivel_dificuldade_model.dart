@@ -5,12 +5,10 @@ part 'nivel_dificuldade_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class NivelDificuldade {
-  String? id;
   String nome;
   DateTime? createdAt;
 
   NivelDificuldade({
-    this.id,
     required this.nome,
     required this.createdAt,
   });

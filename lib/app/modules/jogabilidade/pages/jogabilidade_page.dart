@@ -99,70 +99,80 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
-              perguntas = snapshot.data!;
-              return AnimatedOpacity(
-                opacity: currentPerguntaIndex < perguntas.length ? 1.0 : 0.0,
-                duration: const Duration(milliseconds: 500),
-                child: Column(
-                  children: [
-                    SizedBox(
-                        width: 200,
-                        height: 200,
-                        child: CachedNetworkImage(
-                          imageUrl: perguntas[currentPerguntaIndex].imagem,
-                          placeholder: (context, url) => const SizedBox(
-                              width: 25,
-                              height: 25,
-                              child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                        )),
-                    const SizedBox(height: 20),
-                    Text(
-                      'Pergunta ${currentPerguntaIndex + 1} de ${perguntas.length}',
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                    const SizedBox(height: 20),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: perguntas[currentPerguntaIndex].opcoes.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final option =
-                            perguntas[currentPerguntaIndex].opcoes[index];
-                        final isCorrectAnswer = option ==
-                            perguntas[currentPerguntaIndex].respostaCorreta;
-                        final isSelectedAnswer = option == selectedAnswer;
+              if (snapshot.data!.isEmpty) {
+                return const Center(
+                  child: Text(
+                    "Nenhuma pergunta encontrada para o nível\ne a modalidade escolhida...",
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              } else {
+                perguntas = snapshot.data!;
+                return AnimatedOpacity(
+                  opacity: currentPerguntaIndex < perguntas.length ? 1.0 : 0.0,
+                  duration: const Duration(milliseconds: 500),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                          width: 200,
+                          height: 200,
+                          child: CachedNetworkImage(
+                            imageUrl: perguntas[currentPerguntaIndex].imagem,
+                            placeholder: (context, url) => const SizedBox(
+                                width: 25,
+                                height: 25,
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          )),
+                      const SizedBox(height: 20),
+                      Text(
+                        'Pergunta ${currentPerguntaIndex + 1} de ${perguntas.length}',
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      const SizedBox(height: 20),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount:
+                            perguntas[currentPerguntaIndex].opcoes.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          final option =
+                              perguntas[currentPerguntaIndex].opcoes[index];
+                          final isCorrectAnswer = option ==
+                              perguntas[currentPerguntaIndex].respostaCorreta;
+                          final isSelectedAnswer = option == selectedAnswer;
 
-                        return ListTile(
-                          title: Text(
-                            option,
-                            style: TextStyle(
-                              color: isSelectedAnswer && isCorrectAnswer
-                                  ? correctOptionColor
-                                  : isSelectedAnswer && !isCorrectAnswer
-                                      ? incorrectOptionColor
-                                      : null,
+                          return ListTile(
+                            title: Text(
+                              option,
+                              style: TextStyle(
+                                color: isSelectedAnswer && isCorrectAnswer
+                                    ? correctOptionColor
+                                    : isSelectedAnswer && !isCorrectAnswer
+                                        ? incorrectOptionColor
+                                        : null,
+                              ),
                             ),
-                          ),
-                          leading: Radio<String>(
-                            value: option,
-                            groupValue: selectedAnswer,
-                            onChanged: (String? value) {
-                              verificaResposta(value);
-                              setState(() {
-                                selectedAnswer = value;
-                              });
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              );
+                            leading: Radio<String>(
+                              value: option,
+                              groupValue: selectedAnswer,
+                              onChanged: (String? value) {
+                                verificaResposta(value);
+                                setState(() {
+                                  selectedAnswer = value;
+                                });
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              }
             } else {
               return const Center(
-                child: Text("Nenhuma pergunta encontrada..."),
+                child: Text("Erro ao buscar perguntas"),
               );
             }
           }

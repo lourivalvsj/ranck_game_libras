@@ -5,12 +5,10 @@ part 'modalidade_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Modalidade {
-  String? id;
   String nome;
   DateTime? createdAt;
 
   Modalidade({
-    this.id,
     required this.nome,
     required this.createdAt,
   });

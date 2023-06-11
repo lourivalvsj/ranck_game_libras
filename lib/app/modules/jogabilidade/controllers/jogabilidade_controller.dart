@@ -14,16 +14,10 @@ class JogabilidadeController extends GetxController {
   }) async {
     var snapshot = await FirebaseFirestore.instance
         .collection("perguntas")
-        .where('nivelDificuldade', isEqualTo: nivelDificuldade.toJson())
-        .where('modalidades', arrayContains: modalidade.toJson())
+        // .where('niveisDificuldade', isEqualTo: nivelDificuldade.toJson())
+        // .where('modalidades', arrayContains: modalidade.toJson())
         .get();
 
-    return snapshot.docs.map((doc) {
-      return Pergunta.fromJson(doc.data());
-    }).toList();
-    // snapshot.docs.map((doc) {
-    //   print(doc.id);
-    // }).toList();
-    // return [];
+    return snapshot.docs.map((doc) => Pergunta.fromJson(doc.data())).toList();
   }
 }

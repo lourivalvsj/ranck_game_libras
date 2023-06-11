@@ -135,7 +135,7 @@ class GerarDados {
         .then((value) => Modalidade.fromJson(value.docs.first.data()));
 
     Modalidade modalidadeMisto = await FirebaseFirestore.instance
-        .collection('modalidade')
+        .collection('modalidades')
         .where('nome', isEqualTo: 'Misto')
         .limit(1)
         .get()
