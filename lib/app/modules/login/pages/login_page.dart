@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
       // _scaffoldKey.currentState.showSnackBar(
       //   SnackBar(
       //     content: Text(msg),
-      //     backgroundColor: Theme.of(context).errorColor,
+      // backgroundColor: Theme.of(context).errorColor,
       //   ),
       // );
     } finally {
