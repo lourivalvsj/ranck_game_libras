@@ -1,8 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="ranck_game_libras"
+        android:label="Rank_Game_Libras"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/icon">
+        <!-- android:icon="@mipmap/ic_launcher"> -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
