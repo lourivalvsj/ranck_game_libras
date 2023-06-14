@@ -17,7 +17,7 @@ class TextBody extends Text {
           data,
           style: style ??
               Get.theme.textTheme.bodyLarge?.copyWith(
-                color: color,
+                color: Colors.red,
                 fontWeight: fontWeight ?? FontWeight.normal,
                 decoration: !lineThrough ? TextDecoration.lineThrough : null,
                 fontSize: fontSize ?? fontSizeInputs,

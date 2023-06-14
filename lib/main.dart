@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Ranck Game Libras',
+      title: 'Rank Game Libras',
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
       themeMode: Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,
