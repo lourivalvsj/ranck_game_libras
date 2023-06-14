@@ -1610,10 +1610,10 @@ class GerarDados {
         imagem:
             "https://firebasestorage.googleapis.com/v0/b/ranck-game-libras.appspot.com/o/numeral%2Fnumeral0.png?alt=media&token=53a3f40c-0c43-437b-8378-ad81c68bbad0&_gl=1*z3fliv*_ga*MTY3NzA0Mjc4Ny4xNjg1OTg0MTU1*_ga_CW55HF8NVT*MTY4NjQ0OTA1Ni4xMS4xLjE2ODY0NTI3NjkuMC4wLjA.",
         opcoes: [
-          "NUMERO 0",
-          "NUMERO 1",
-          "NUMERO 2",
           "NUMERO 3",
+          "NUMERO 0",
+          "NUMERO 2",
+          "NUMERO 1",
         ],
         respostaCorreta: "NUMERO 0",
         score: 1,
@@ -1624,6 +1624,368 @@ class GerarDados {
         ],
         createdAt: DateTime.now(),
       ),
+      Pergunta( //Numeral 1
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 9",
+          "NUMERO 3",
+          "NUMERO 2",
+          "NUMERO 1",
+        ],
+        respostaCorreta: "NUMERO 1",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 2
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 3",
+          "NUMERO 1",
+          "NUMERO 2",
+          "NUMERO 4",
+        ],
+        respostaCorreta: "NUMERO 2",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 3
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 8",
+          "NUMERO 2",
+          "NUMERO 6",
+          "NUMERO 3",
+        ],
+        respostaCorreta: "NUMERO 3",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 4
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 7",
+          "NUMERO 4",
+          "NUMERO 2",
+          "NUMERO 9",
+        ],
+        respostaCorreta: "NUMERO 4",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 5
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 9",
+          "NUMERO 1",
+          "NUMERO 5",
+          "NUMERO 4",
+        ],
+        respostaCorreta: "NUMERO 5",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 6
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 6",
+          "NUMERO 8",
+          "NUMERO 2",
+          "NUMERO 9",
+        ],
+        respostaCorreta: "NUMERO 6",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 7
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 4",
+          "NUMERO 3",
+          "NUMERO 7",
+          "NUMERO 1",
+        ],
+        respostaCorreta: "NUMERO 7",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 8
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 6",
+          "NUMERO 0",
+          "NUMERO 2",
+          "NUMERO 8",
+        ],
+        respostaCorreta: "NUMERO 8",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 9
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 7",
+          "NUMERO 9",
+          "NUMERO 0",
+          "NUMERO 2",
+        ],
+        respostaCorreta: "NUMERO 9",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 10
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 00",
+          "NUMERO 10",
+          "NUMERO 20",
+          "NUMERO 13",
+        ],
+        respostaCorreta: "NUMERO 10",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 11
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 12",
+          "NUMERO 14",
+          "NUMERO 11",
+          "NUMERO 13",
+        ],
+        respostaCorreta: "NUMERO 11",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 12
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 20",
+          "NUMERO 18",
+          "NUMERO 02",
+          "NUMERO 12",
+        ],
+        respostaCorreta: "NUMERO 12",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 13
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 13",
+          "NUMERO 18",
+          "NUMERO 21",
+          "NUMERO 33",
+        ],
+        respostaCorreta: "NUMERO 13",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 14
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 13",
+          "NUMERO 14",
+          "NUMERO 21",
+          "NUMERO 19",
+        ],
+        respostaCorreta: "NUMERO 14",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 15
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 21",
+          "NUMERO 10",
+          "NUMERO 02",
+          "NUMERO 15",
+        ],
+        respostaCorreta: "NUMERO 15",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 16
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 08",
+          "NUMERO 17",
+          "NUMERO 16",
+          "NUMERO 31",
+        ],
+        respostaCorreta: "NUMERO 16",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 17
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 17",
+          "NUMERO 11",
+          "NUMERO 22",
+          "NUMERO 33",
+        ],
+        respostaCorreta: "NUMERO 17",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 18
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 18",
+          "NUMERO 11",
+          "NUMERO 25",
+          "NUMERO 38",
+        ],
+        respostaCorreta: "NUMERO 18",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 19
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 09",
+          "NUMERO 19",
+          "NUMERO 29",
+          "NUMERO 39",
+        ],
+        respostaCorreta: "NUMERO 19",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      Pergunta( //Numeral 20
+        imagem:
+            "",
+        opcoes: [
+          "NUMERO 20",
+          "NUMERO 10",
+          "NUMERO 00",
+          "NUMERO 30",
+        ],
+        respostaCorreta: "NUMERO 20",
+        score: 1,
+        nivelDificuldade: nivelBasico,
+        modalidades: [
+          modalidadeNumerico,
+          modalidadeMisto,
+        ],
+        createdAt: DateTime.now(),
+      ),
+      
+      
       //Pergunta Numeral Medio
       Pergunta( //Numeral 0
         imagem:
