@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ranck_game_libras/utils/constants.dart';
 
 class TitleBody extends Text {
   TitleBody(
-    String data, {super.key, 
+    String data, {
+    super.key,
     Color? color,
     TextAlign? textAlign,
     bool? softWrap,
     TextStyle? style,
+    double? fontSize,
     TextOverflow? overflow,
     FontWeight? fontWeight,
   }) : super(
@@ -16,6 +19,7 @@ class TitleBody extends Text {
               Get.theme.textTheme.bodyMedium?.copyWith(
                 color: color,
                 fontWeight: fontWeight,
+                fontSize: fontSize ?? fontSizeInputs,
               ),
           textAlign: textAlign,
           softWrap: softWrap,

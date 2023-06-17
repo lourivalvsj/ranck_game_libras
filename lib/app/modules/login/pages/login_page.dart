@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ranck_game_libras/app/modules/login/models/login_model.dart';
 import 'package:ranck_game_libras/app/modules/login/widgets/form_login.dart';
+import 'package:ranck_game_libras/app/modules/user/models/user_model.dart'
+    as myUser;
+import 'package:ranck_game_libras/app/storage/app-storage.dart';
+import 'package:ranck_game_libras/app/theme/Theme.dart';
 import 'package:ranck_game_libras/utils/routes/app_routes.dart';
 
 class LoginPage extends StatefulWidget {
@@ -26,6 +30,8 @@ class _LoginPageState extends State<LoginPage> {
 
     UserCredential userCredential;
 
+    var userData;
+
     try {
       if (loginModel.isLogin) {
         userCredential = await _auth.signInWithEmailAndPassword(
@@ -38,9 +44,10 @@ class _LoginPageState extends State<LoginPage> {
           password: loginModel.password!,
         );
 
-        final userData = {
+        userData = {
           'name': loginModel.name,
           'email': loginModel.email,
+          'score': 0,
           'active': false,
           'isAdmin': false,
         };
@@ -50,6 +57,17 @@ class _LoginPageState extends State<LoginPage> {
             .doc(userCredential.user?.uid)
             .set(userData);
       }
+
+      var snapshot = await FirebaseFirestore.instance
+          .collection("users")
+          .doc(userCredential.user?.uid)
+          .get();
+
+      var user = myUser.User.fromJson(snapshot.data()!);
+
+      AppStorage.instance.setToken(userCredential.user?.uid);
+
+      AppStorage.instance.setUser(user);
 
       Get.toNamed(AppRoutes.NIVEL_DIFICULDADE);
     } catch (err) {
@@ -82,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       key: _scaffoldKey,
       // backgroundColor: Theme.of(context).primaryColor,
-      backgroundColor: Colors.orange[300],
+      backgroundColor: GameColors.primaryLight,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

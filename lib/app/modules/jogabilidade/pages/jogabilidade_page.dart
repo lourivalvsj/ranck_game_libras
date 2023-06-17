@@ -8,7 +8,6 @@ import 'package:ranck_game_libras/app/modules/jogabilidade/models/pergunta_model
 import 'package:ranck_game_libras/app/modules/modalidade/models/modalidade_model.dart';
 import 'package:ranck_game_libras/app/modules/nivel_dificuldade/models/nivel_dificuldade_model.dart';
 import 'package:ranck_game_libras/app/widgets/loading.dart';
-import 'package:ranck_game_libras/app/widgets/title-body.dart';
 import 'package:ranck_game_libras/app/widgets/title-page.dart';
 import 'package:ranck_game_libras/utils/routes/app_routes.dart';
 
@@ -30,47 +29,45 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
   Color? correctOptionColor;
   Color? incorrectOptionColor;
 
-  void verificaResposta(String? selectedAnswer) {
-    String respostaCorreta = perguntas[currentPerguntaIndex].respostaCorreta;
+  int contadorCorretas = 0;
+  int contadorIncorretas = 0;
 
+  RxBool isLoading = false.obs;
+
+  void verificaResposta(String? selectedAnswer) async {
+    String respostaCorreta = perguntas[currentPerguntaIndex].respostaCorreta;
+    isLoading(true);
     if (selectedAnswer == respostaCorreta) {
       setState(() {
         score += perguntas[currentPerguntaIndex].score;
+        contadorCorretas++;
         correctOptionColor = Colors.green;
       });
     } else {
       setState(() {
         incorrectOptionColor = Colors.red;
         correctOptionColor = Colors.green;
+        contadorIncorretas++;
       });
     }
 
-    Timer(Duration(seconds: selectedAnswer == respostaCorreta ? 1 : 2), () {
+    await Future.delayed(
+        Duration(seconds: selectedAnswer == respostaCorreta ? 2 : 2), () {
       if (currentPerguntaIndex < perguntas.length - 1) {
         setState(() {
           currentPerguntaIndex++;
-          selectedAnswer = null;
+          this.selectedAnswer = null;
           correctOptionColor = null;
           incorrectOptionColor = null;
+          isLoading(false);
         });
       } else {
-        Get.offAndToNamed(AppRoutes.FIM_JOGO);
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: TitlePage('Resultado'),
-              content: TitleBody('Pontuação: $score'),
-              actions: <Widget>[
-                TextButton(
-                  child: const Text('OK'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    // Reinicia o jogo ou executa alguma outra ação necessária
-                  },
-                ),
-              ],
-            );
+        Get.offAndToNamed(
+          AppRoutes.FIM_JOGO,
+          arguments: {
+            'qtdeCorretas': contadorCorretas,
+            'qtdeIncorretas': contadorIncorretas,
+            'score': score,
           },
         );
       }
@@ -153,16 +150,18 @@ class _JogabilidadePageState extends State<JogabilidadePage> {
                                         : null,
                               ),
                             ),
-                            leading: Radio<String>(
-                              value: option,
-                              groupValue: selectedAnswer,
-                              onChanged: (String? value) {
-                                verificaResposta(value);
-                                setState(() {
-                                  selectedAnswer = value;
-                                });
-                              },
-                            ),
+                            leading: Obx(() => Radio<String>(
+                                  value: option,
+                                  groupValue: selectedAnswer,
+                                  onChanged: isLoading.isTrue
+                                      ? null
+                                      : (String? value) {
+                                          verificaResposta(value);
+                                          setState(() {
+                                            selectedAnswer = value;
+                                          });
+                                        },
+                                )),
                           );
                         },
                       ),

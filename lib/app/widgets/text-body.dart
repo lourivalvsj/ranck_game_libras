@@ -4,7 +4,8 @@ import 'package:ranck_game_libras/utils/constants.dart';
 
 class TextBody extends Text {
   TextBody(
-    String data, {super.key, 
+    String data, {
+    super.key,
     Color? color,
     TextAlign? textAlign,
     bool? softWrap,
@@ -17,7 +18,7 @@ class TextBody extends Text {
           data,
           style: style ??
               Get.theme.textTheme.bodyLarge?.copyWith(
-                color: Colors.red,
+                color: color,
                 fontWeight: fontWeight ?? FontWeight.normal,
                 decoration: !lineThrough ? TextDecoration.lineThrough : null,
                 fontSize: fontSize ?? fontSizeInputs,

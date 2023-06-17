@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ranck_game_libras/app/modules/nivel_dificuldade/controllers/nivel_dificuldade_controller.dart';
 import 'package:ranck_game_libras/app/modules/nivel_dificuldade/models/nivel_dificuldade_model.dart';
+import 'package:ranck_game_libras/app/storage/app-storage.dart';
 import 'package:ranck_game_libras/app/widgets/loading.dart';
 import 'package:ranck_game_libras/app/widgets/primary-button.dart';
 import 'package:ranck_game_libras/app/widgets/title-page.dart';
@@ -20,6 +21,8 @@ class NivelDificuldadePage extends StatelessWidget {
           IconButton(
               onPressed: () {
                 FirebaseAuth.instance.signOut();
+                AppStorage.instance.setToken(null);
+                AppStorage.instance.setUser(null);
                 Navigator.of(context).pushNamed(
                   AppRoutes.LOGIN,
                 );

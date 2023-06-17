@@ -146,6 +146,7 @@ class InputText extends StatelessWidget {
                   maxLength: maxLength,
                   style: const TextStyle(
                     fontSize: fontSizeMenu,
+                    color: GameColors.black,
                   ),
                   decoration: InputDecoration(
                     suffixIcon: suffixIcon,
